@@ -1,0 +1,23 @@
+/* basic inner */
+@mixin basic-inner($class) {
+  #{$class} {
+    &__inner {
+      background-color: $basic-gold !important;
+      height: 250px;
+      padding-top: 5%;
+    }
+    &__heading-image {
+      width: 50%;
+    }
+    &__sub-heading {
+      width: 50%;
+      font-size: 1.8rem;
+      color: #fff;
+      background-color: $basic-navy;
+      text-align: center;
+      padding: 5px 0;
+      margin-top: 10px;
+    }
+  }
+  @content;
+}
