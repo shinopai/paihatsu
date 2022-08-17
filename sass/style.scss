@@ -1,18 +1,40 @@
 @import "_basic";
 @import "_mixin";
+@import "_breakpoints";
 
 /* header */
 .header {
+  position: relative;
   &__upper {
     padding: 10px 20px;
     border-top: 2px solid $basic-red;
     justify-content: space-between;
+    @include mq(sm) {
+      align-items: center;
+    }
   }
   &__logo {
     width: 300px;
+    @include mq(md) {
+      width: 65%;
+      max-width: 300px;
+    }
   }
   &__menu {
     gap: 25px;
+    @include mq(md) {
+      display: none;
+    }
+  }
+  &__menu--sp {
+    display: none;
+    @include mq(md) {
+      display: flex;
+      gap: 15px;
+    }
+    i {
+      font-size: 3rem;
+    }
   }
   &__item {
     a {
@@ -32,6 +54,9 @@
     border-top: 2px solid #dddddd;
     border-bottom: 2px solid #dddddd;
     justify-content: space-between;
+    @include mq(md) {
+      display: none;
+    }
   }
   &__heading {
     font-size: 1.6rem;
@@ -53,12 +78,139 @@
       }
     }
   }
+  &__search-form {
+    width: 70%;
+    position: relative;
+    &--wrap {
+      background-color: #efefef;
+      padding: 30px;
+      display: none;
+      @include mq(sm) {
+        padding: 15px;
+      }
+    }
+    &--text {
+      width: 100%;
+      padding: 20px;
+      border-radius: 100vh;
+      border: none;
+      font-size: 2rem;
+      @include mq(sm) {
+        font-size: min(4.68vw, 2rem);
+      }
+    }
+    img {
+      position: absolute;
+      top: calc(50% - 27px / 2);
+      right: 3%;
+    }
+    @include mq(sm) {
+      width: 100%;
+      max-width: 500px;
+    }
+  }
+  &__sp-nav--overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    display: none;
+  }
+  &__sp-nav {
+    transition: all 0.3s;
+    position: absolute;
+    top: -565px;
+    left: 0;
+    z-index: 3;
+    background-color: #fff;
+    width: 100%;
+    a {
+      font-size: 1.6rem;
+      font-weight: bold;
+      &.first {
+        font-size: 1.7rem;
+      }
+    }
+    li {
+      padding: 10px;
+      border-bottom: 1px solid #dddddd;
+      position: relative;
+      &.first {
+        border-top: 2px solid #dddddd;
+        border-bottom: 2px solid #dddddd;
+        &::after {
+          content: none;
+        }
+      }
+      &::after {
+        font-family: "Font Awesome 5 Free";
+        content: "\2b";
+        position: absolute;
+        right: 5%;
+        font-size: 20px;
+        color: #8e8e8e;
+      }
+    }
+  }
+  &__sp-nav--middle {
+    li {
+      background-color: #ededeb;
+      text-align: center;
+      &::after {
+        content: none;
+      }
+      &:first-child {
+        border-bottom: 1px solid #fff;
+      }
+    }
+    a {
+      font-weight: 500;
+      font-size: 1.4rem;
+    }
+  }
+  &__sp-nav--lower {
+    border-top: 4px solid $basic-red;
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      width: 50%;
+      text-align: center;
+      &::after {
+        font-family: "Font Awesome 5 Free";
+        content: "\f105";
+        position: absolute;
+        right: 5%;
+        top: calc(50% - 22px / 2);
+        font-size: 2rem;
+        font-weight: 600;
+        color: $basic-red;
+      }
+      &:nth-child(odd) {
+        border-right: 1px solid #c7c7c7;
+      }
+    }
+  }
+  &__button--sp {
+    &.active {
+      i {
+        &::before {
+          content: "\f00d";
+        }
+      }
+    }
+  }
 }
 
 /* slider */
 .slider {
   &__footer {
     height: 200px;
+    @include mq(sm) {
+      height: 125px;
+    }
   }
   &__text-image {
     width: 50%;
@@ -82,9 +234,25 @@
   }
 }
 
+/* swiper */
+.swiper {
+  &-wrapper {
+    display: none !important;
+    @include mq(sm) {
+      display: flex !important;
+    }
+  }
+  &-slide {
+    margin: 10px 15px;
+    width: 90% !important;
+    max-width: 450px;
+  }
+}
+
 /* main */
 .main {
   background-color: #ededeb;
+  position: relative;
 }
 
 /* magazine */
@@ -92,6 +260,11 @@
   &__inner {
     width: 55%;
     gap: 25px;
+    @include mq(sm) {
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+    }
   }
   &__image {
     width: 50%;
@@ -108,6 +281,12 @@
       font-size: 1.4rem;
       line-height: 1.8;
     }
+    @include mq(sm) {
+      width: 65%;
+    }
+  }
+  @include mq(sm) {
+    margin-top: 10%;
   }
 }
 
@@ -118,6 +297,17 @@
     margin-top: 25px;
     justify-content: center;
     gap: 45px;
+    display: none;
+    @include mq(sm) {
+      overflow-x: scroll;
+      display: flex;
+    }
+    &.no-swipper {
+      display: flex;
+      @include mq(sm) {
+        display: none;
+      }
+    }
   }
   &__item {
     width: 40%;
@@ -140,11 +330,17 @@
   &__item--footer {
     margin-top: 25px;
     align-items: center;
+    @include mq(sm) {
+      flex-wrap: wrap;
+    }
   }
   &__text {
     width: 45%;
     font-size: 1.4rem;
     font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+    @include mq(sm) {
+      width: 100%;
+    }
   }
   &__image--user {
     width: 20%;
@@ -155,6 +351,9 @@
     dd {
       font-size: 2rem;
       margin-left: 0;
+    }
+    @include mq(sm) {
+      width: 70%;
     }
   }
   &__icon {
@@ -167,16 +366,34 @@
 @include basic-inner(".exterior");
 .exterior {
   margin-top: 370px;
+  &.no-swipper {
+    display: flex;
+    @include mq(sm) {
+      display: none;
+    }
+  }
   &__heading-image {
     width: 30%;
-  }
-  &__sub-heading {
-    width: 30%;
+    @include mq(sm) {
+      width: 45%;
+      max-width: 250px;
+    }
   }
   &__vols {
     margin-top: 25px;
     justify-content: center;
     gap: 35px;
+    display: none;
+    @include mq(sm) {
+      overflow-x: scroll;
+      display: flex;
+    }
+    &.no-swipper {
+      display: flex;
+      @include mq(sm) {
+        display: none !important;
+      }
+    }
   }
   &__item {
     width: 28%;
@@ -205,6 +422,9 @@
   }
   &__image--user {
     width: 25%;
+    @include mq(sm) {
+      width: 20%;
+    }
   }
   &__profile {
     padding-left: 20px;
@@ -217,6 +437,12 @@
     width: 130px;
     transition: all 0.3s;
   }
+  @include mq(md) {
+    margin-top: 280px;
+  }
+  @include mq(sm) {
+    margin-top: 10%;
+  }
 }
 
 /* color & safety */
@@ -226,14 +452,29 @@
   &__wrap {
     justify-content: space-between;
     gap: 50px;
+    @include mq(sm) {
+      flex-direction: column;
+    }
   }
   &__inner {
     width: 50%;
+    @include mq(sm) {
+      width: 100%;
+      &.second {
+        margin-top: 10%;
+        @include mq(sm) {
+          margin-top: initial;
+        }
+      }
+    }
   }
   &__heading-image {
     width: 60%;
     &.second {
       width: 45%;
+    }
+    @include mq(sm) {
+      width: 75%;
     }
   }
   &__sub-heading {
@@ -249,18 +490,34 @@
   &__image {
     margin-top: 25px;
     width: 80%;
+    @include mq(sm) {
+      max-width: 450px;
+    }
   }
   &__item--footer {
     gap: 25px;
+    margin-top: 20px;
+    @include mq(sm) {
+      flex-direction: column;
+    }
   }
   &__text {
     width: 50%;
     font-size: 1.4rem;
     &.second {
       width: initial;
+      margin-top: 20px;
+      @include mq(sm) {
+        width: 80%;
+        margin: 20px auto 0;
+      }
     }
     &:not(.second) {
       margin-top: 0;
+    }
+    @include mq(sm) {
+      width: 80%;
+      margin: 0 auto;
     }
   }
   &__profile {
@@ -269,19 +526,29 @@
       font-size: 1.8rem;
       margin-left: 0;
     }
+    @include mq(sm) {
+      width: 80%;
+      margin: 0 auto;
+    }
   }
   &__icon {
     width: 130px;
     transition: all 0.3s;
   }
+  @include mq(md) {
+    margin-top: 280px;
+  }
+  @include mq(sm) {
+    margin-top: 10%;
+  }
 }
 
 /* premium */
 .premium {
-  margin-top: 370px;
+  margin-top: 300px;
   background-color: #e2ddcc;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding-top: min(10%, 70px);
+  padding-bottom: min(10%, 70px);
   &__catch {
     font-size: 2.2rem;
     text-align: center;
@@ -295,12 +562,18 @@
     gap: 40px;
     justify-content: space-evenly;
     margin-top: 50px;
+    @include mq(sm) {
+      gap: 10px;
+    }
   }
   &__item {
     width: 27%;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    @include mq(sm) {
+      width: 40%;
+    }
   }
   &__text {
     font-size: 1.7rem;
@@ -314,6 +587,13 @@
     text-align: center;
     margin-top: 0;
   }
+  @include mq(md) {
+    margin-top: 210px;
+  }
+  @include mq(sm) {
+    margin-top: 10%;
+    padding: 5% 0;
+  }
 }
 
 /* navy box */
@@ -326,22 +606,34 @@
 .cm {
   background-color: #ededeb;
   position: relative;
-  padding-bottom: 5%;
+  padding-bottom: 10%;
   &__banner--main {
     width: 50%;
+    max-width: 600px;
     margin: 0 auto;
     position: absolute;
     top: -100px;
     left: 0;
     right: 0;
+    @include mq(sm) {
+      width: 80%;
+      max-width: 390px;
+    }
   }
   &__heading-wrap {
-    padding-top: 390px;
+    padding-top: 33%;
+    @include mq(sm) {
+      padding-top: min(40%, 180px);
+    }
   }
   &__heading--image {
     position: relative;
     img {
       width: 7%;
+      @include mq(sm) {
+        width: 20%;
+        max-width: 70px;
+      }
     }
     &::before {
       content: "";
@@ -352,6 +644,9 @@
       position: absolute;
       top: calc(50% - 2px / 2);
       left: 0;
+      @include mq(sm) {
+        width: 35%;
+      }
     }
     &::after {
       content: "";
@@ -362,6 +657,9 @@
       position: absolute;
       top: calc(50% - 2px / 2);
       right: 0;
+      @include mq(sm) {
+        width: 35%;
+      }
     }
   }
   &__sub-heading {
@@ -389,12 +687,18 @@
         }
       }
     }
+    @include mq(sm) {
+      width: 100%;
+    }
   }
   &__tmbs {
     margin-top: 20px;
     display: flex;
     justify-content: center;
     gap: 20px;
+    @include mq(sm) {
+      gap: 5px;
+    }
   }
   &__item {
     width: 20%;
@@ -407,6 +711,9 @@
         color: #fff;
       }
     }
+    @include mq(sm) {
+      width: 32%;
+    }
   }
   &__label {
     font-size: 1.6rem;
@@ -414,10 +721,19 @@
     display: block;
     text-align: center;
     padding: 10px;
+    @include mq(sm) {
+      font-size: min(3.125vw, 1.6rem);
+    }
   }
   &__banner {
     width: 80%;
     margin-top: 50px;
+    @include mq(sm) {
+      width: 100%;
+      &.second {
+        margin-top: 25px;
+      }
+    }
   }
 }
 
@@ -425,14 +741,17 @@
 .footer {
   &__upper {
     background-color: #d6d6d6;
-    padding-top: 5%;
-    padding-bottom: 5%;
+    padding-top: min(10%, 70px);
+    padding-bottom: min(10%, 70px);
   }
   &__menu {
     width: 90%;
     justify-content: center;
     flex-wrap: wrap;
     gap: 50px 0;
+    @include mq(sm) {
+      gap: 30px 0;
+    }
   }
   &__item {
     width: 50%;
@@ -443,6 +762,9 @@
           transform: translateX(10px);
         }
       }
+    }
+    @include mq(sm) {
+      width: 80%;
     }
   }
   &__image {
@@ -462,17 +784,22 @@
   }
   &__lower {
     background-color: #757575;
-    padding-top: 2%;
-    padding-bottom: 5%;
+    padding: 2% 0;
     a {
       color: #fff;
       font-size: 1.4rem;
       &:hover {
         opacity: 0.7;
       }
+      @include mq(sm) {
+        font-size: min(3.44vw, 1.4rem);
+      }
     }
     .footer__menu {
       gap: 20px;
+    }
+    @include mq(sm) {
+      padding-bottom: 2%;
     }
   }
   &__copy {

@@ -1,3 +1,5 @@
+@import "_breakpoints";
+
 /* basic inner */
 @mixin basic-inner($class) {
   #{$class} {
@@ -5,9 +7,22 @@
       background-color: $basic-gold !important;
       height: 250px;
       padding-top: 5%;
+      @include mq(sm) {
+        height: initial;
+        background: linear-gradient(
+          180deg,
+          rgba(155, 146, 119, 1) 35%,
+          rgba(237, 237, 235, 1) 35%,
+          rgba(237, 237, 235, 1) 100%
+        );
+      }
     }
     &__heading-image {
       width: 50%;
+      @include mq(sm) {
+        width: 60%;
+        max-width: 250px;
+      }
     }
     &__sub-heading {
       width: 50%;
@@ -20,4 +35,11 @@
     }
   }
   @content;
+}
+
+/* media query */
+@mixin mq($breakpoint) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
 }

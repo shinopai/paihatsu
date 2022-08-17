@@ -20,13 +20,23 @@
     <link rel="stylesheet" href="./assets/css/slick/slick-theme.css" />
     <script src="./assets/js/slick/slick.min.js"></script>
 
+    <!-- fontawesome -->
+    <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- swiper -->
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
+    <script sec="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
     <title>ムーヴキャンバス｜セオリー トップページ｜パイハツ</title>
   </head>
   <body>
     <!-- header -->
     <header class="header">
       <div class="header__upper flex">
-        <a href="/">
+        <a href="/" class="contents">
           <h1 class="header__logo">
             <img
               src="./assets/images/logo_paihatsu.png"
@@ -65,7 +75,54 @@
             />
           </li>
         </ul>
+        <ul class="header__menu--sp">
+          <li>
+            <img
+              src="./assets/images/ico_search.svg"
+              alt="サイト内検索"
+              srcset=""
+              class="header__icon"
+            />
+          </li>
+          <li>
+            <span class="header__button--sp"><i class="fas fa-bars"></i></span>
+          </li>
+        </ul>
       </div>
+      <!-- seacrh form -->
+      <div class="header__search-form--wrap">
+        <form action="" class="header__search-form mx-auto">
+          <input type="search" name="" id="" class="header__search-form--text" placeholder="パイハツ サイト内検索">
+                      <img
+              src="./assets/images/ico_search.svg"
+              alt="サイト内検索"
+              srcset=""
+              class="header__icon"
+            />
+        </form>
+      </div>
+      <!-- header nav for sp-->
+      <ul class="header__sp-nav">
+        <li class="first"><a href="#" class="first">商品情報サイト</a></li>
+        <li><a href="#">カーラインナップ</a></li>
+        <li><a href="#">アクセサリー</a></li>
+        <li><a href="#">ご購入サポート</a></li>
+        <li><a href="#">おすすめ情報</a></li>
+        <li><a href="#">アフターサービス</a></li>
+        <li><a href="#">パイハツファン</a></li>
+        <ul class="header__sp-nav--middle">
+        <li><a href="#">よくある質問</a></li>
+        <li><a href="#">GLOBAL</a></li>
+        </ul>
+        <ul class="header__sp-nav--lower">
+          <li><a href="#">商品情報</a></li>
+          <li><a href="#">企業情報</a></li>
+          <li><a href="#">採用情報</a></li>
+          <li><a href="#">リコール情報</a></li>
+          <li><a href="#">お問い合わせ</a></li>
+          <li><a href="#">MY PAIHATSU</a></li>
+        </ul>
+      </ul>
       <div class="header__lower flex">
         <a href="/">
           <h2 class="header__heading">商品情報サイト</h2>
@@ -86,21 +143,28 @@
 
     <!-- main -->
     <main class="main">
+      <div class="header__sp-nav--overlay"></div>
       <div>
         <div class="wrap mx-auto">
           <!-- main slider -->
           <ul class="slider">
             <li>
-              <img
-                src="./assets/images/img_front01.jpg"
-                alt="キャンバス セオリー"
-              />
+              <picture>
+                <source srcset="./assets/images/img_front_sp01.webp" media="(max-width: 768px)"/>
+                <img
+                  src="./assets/images/img_front01.jpg"
+                  alt="キャンバス セオリー"
+                />
+              </picture>
             </li>
             <li>
-              <img
-                src="./assets/images/img_front02.jpg"
-                alt="キャンバス セオリー"
-              />
+              <picture>
+                <source srcset="./assets/images/img_front_sp02.webp" media="(max-width: 768px)"/>
+                <img
+                  src="./assets/images/img_front02.jpg"
+                  alt="キャンバス セオリー"
+                />
+              </picture>
             </li>
           </ul>
           <div class="slider__footer flex">
@@ -143,10 +207,10 @@
                   class="mx-auto"
                 />
                 <figcaption>
-                  私らしいクルマに、私らしく乗る。 誰かとくらべて、
+                  私らしいクルマに、私らしく乗る。<br class="sm-only">誰かとくらべて、
                   心をいそがしくするのではなく
                   自分の日々を丁寧に暮らしていくために
-                  見た目もいい。居心地もいい。走りも満足。ようやく出会えた。
+                  見た目もいい。<br class="sm-only">居心地もいい。走りも満足。ようやく出会えた。<br class="sm-only">
                   このクルマ、私らしいなと思う。私らしく生きる、私のセオリー。
                 </figcaption>
               </figure>
@@ -157,16 +221,112 @@
           <section class="interior section-margin">
             <div class="interior__inner">
               <h2 class="interior__heading-image mx-auto">
-                <img
-                  src="./assets/images/txt_front03.svg"
-                  alt="私の時間を楽しむ、私の心地よい空間"
-                  srcset=""
-                />
+                <picture>
+                  <source srcset="./assets/images/txt_front_sp01.svg" media="(max-width: 768px)">
+                  <img
+                    src="./assets/images/txt_front03.svg"
+                    alt="私の時間を楽しむ、私の心地よい空間"
+                    srcset=""
+                  />
+                </picture>
               </h2>
               <p class="interior__sub-heading mx-auto">
                 &#9839;INTERIOR
               </p>
               <div class="interior__vols flex">
+                <div class="swiper-wrapper">
+                <a
+                  href="https://www.daihatsu.co.jp/lineup/move_canbus/special/theory/article_01/"
+                  target="_blank"
+                  class="contents"
+                >
+                  <div class="interior__item">
+                    <div class="interior__image">
+                      <img
+                        src="./assets/images/img_front04.jpg"
+                        alt="機能と心地よさ"
+                        srcset=""
+                      />
+                      <img
+                        src="./assets/images/ico_front02.jpg"
+                        alt="vol1"
+                        srcset=""
+                        class="label"
+                      />
+                    </div>
+                    <div class="interior__item--footer flex">
+                      <p class="interior__text">
+                        「キャンバス
+                        セオリー」の魅力のひとつは、機能と心地よさを兼ね備えた...
+                      </p>
+                      <div class="interior__image--user">
+                        <img
+                          src="./assets/images/img_front05.png"
+                          alt="大谷優依"
+                          srcset=""
+                        />
+                      </div>
+                      <dl class="interior__profile">
+                        <dt>インテリアスタイリスト</dt>
+                        <dd>大谷優依<span>さん</span></dd>
+                        <div class="interior__icon">
+                          <img
+                            src="./assets/images/ico_front02.svg"
+                            alt="under arrow"
+                            srcset=""
+                          />
+                        </div>
+                      </dl>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  href="https://www.daihatsu.co.jp/lineup/move_canbus/special/theory/article_01/"
+                  target="_blank"
+                  class="contents"
+                >
+                  <div class="interior__item">
+                    <div class="interior__image">
+                      <img
+                        src="./assets/images/img_front06.jpg"
+                        alt="楽しむためのアイデア"
+                        srcset=""
+                      />
+                      <img
+                        src="./assets/images/ico_front03.jpg"
+                        alt="vol2"
+                        srcset=""
+                        class="label"
+                      />
+                    </div>
+                    <div class="interior__item--footer flex">
+                      <p class="interior__text">
+                        車内を第2のリビングのように楽しむためのアイデアを、〈アクタス・ノ...
+                      </p>
+                      <div class="interior__image--user">
+                        <img
+                          src="./assets/images/img_front07.png"
+                          alt="曽我広範"
+                          srcset=""
+                        />
+                      </div>
+                      <dl class="interior__profile">
+                        <dt>〈アクタス・ノードリウム〉バイヤー</dt>
+                        <dd>曽我広範<span>さん</span></dd>
+                        <div class="interior__icon">
+                          <img
+                            src="./assets/images/ico_front02.svg"
+                            alt="under arrow"
+                            srcset=""
+                          />
+                        </div>
+                      </dl>
+                    </div>
+                  </div>
+                </a>
+                </div>
+              </div>
+              <div class="interior__vols flex no-swipper">
                 <a
                   href="https://www.daihatsu.co.jp/lineup/move_canbus/special/theory/article_01/"
                   target="_blank"
@@ -257,23 +417,164 @@
                   </div>
                 </a>
               </div>
+              </div>
             </div>
           </section>
 
           <!-- exterior -->
           <section class="exterior">
+            <div class="wrap mx-auto">
             <div class="exterior__inner">
               <h2 class="exterior__heading-image mx-auto">
+                <picture>
+                  <source srcset="./assets/images/txt_front_sp02.svg" media="(max-width: 768px)">
                 <img
                   src="./assets/images/txt_front04.svg"
                   alt="私のもの選び、私の基準"
                   srcset=""
                 />
+                </picture>
               </h2>
               <p class="exterior__sub-heading mx-auto">
                 &#9839;exterior
               </p>
               <div class="exterior__vols flex">
+                                <div class="swiper-wrapper">
+                <a
+                  href="https://www.daihatsu.co.jp/lineup/move_canbus/special/theory/article_01/"
+                  target="_blank"
+                  class="contents"
+                >
+                  <div class="exterior__item">
+                    <div class="exterior__image">
+                      <img
+                        src="./assets/images/img_front08.jpg"
+                        alt="もの選びの基準"
+                        srcset=""
+                      />
+                      <img
+                        src="./assets/images/ico_front04.jpg"
+                        alt="vol1"
+                        srcset=""
+                        class="label"
+                      />
+                    </div>
+                    <div class="exterior__item--footer flex">
+                      <p class="exterior__text">
+                        もの選びの基準＝セオリーが、自分の中にしっかりとある人は素敵だ。流行や周囲の...
+                      </p>
+                      <div class="exterior__image--user">
+                        <img
+                          src="./assets/images/img_front11.png"
+                          alt="西山隼人"
+                          srcset=""
+                        />
+                      </div>
+                      <dl class="exterior__profile">
+                        <dt>花屋「みたて」店主</dt>
+                        <dd>西山隼人<span>さん</span></dd>
+                        <div class="exterior__icon">
+                          <img
+                            src="./assets/images/ico_front02.svg"
+                            alt="under arrow"
+                            srcset=""
+                          />
+                        </div>
+                      </dl>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  href="https://www.daihatsu.co.jp/lineup/move_canbus/special/theory/article_01/"
+                  target="_blank"
+                  class="contents"
+                >
+                  <div class="exterior__item">
+                    <div class="exterior__image">
+                      <img
+                        src="./assets/images/img_front09.jpg"
+                        alt="素敵な大人"
+                        srcset=""
+                      />
+                      <img
+                        src="./assets/images/ico_front05.jpg"
+                        alt="vol2"
+                        srcset=""
+                        class="label"
+                      />
+                    </div>
+                    <div class="exterior__item--footer flex">
+                      <p class="exterior__text">
+                        素敵な大人は上質を知り、確かなもの選びの基準＝セオリーが自分の中にあるもの。流行...
+                      </p>
+                      <div class="exterior__image--user">
+                        <img
+                          src="./assets/images/img_front12.png"
+                          alt="柳沢小実"
+                          srcset=""
+                        />
+                      </div>
+                      <dl class="exterior__profile">
+                        <dt>エッセイスト</dt>
+                        <dd>柳沢小実<span>さん</span></dd>
+                        <div class="exterior__icon">
+                          <img
+                            src="./assets/images/ico_front02.svg"
+                            alt="under arrow"
+                            srcset=""
+                          />
+                        </div>
+                      </dl>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  href="https://www.daihatsu.co.jp/lineup/move_canbus/special/theory/article_01/"
+                  target="_blank"
+                  class="contents"
+                >
+                  <div class="exterior__item">
+                    <div class="exterior__image">
+                      <img
+                        src="./assets/images/img_front10.jpg"
+                        alt="機能と心地よさ"
+                        srcset=""
+                      />
+                      <img
+                        src="./assets/images/ico_front06.jpg"
+                        alt="vol3"
+                        srcset=""
+                        class="label"
+                      />
+                    </div>
+                    <div class="exterior__item--footer flex">
+                      <p class="exterior__text">
+                        自分の軸を大切に、日々の相棒となる服や日用品、そしてクルマを選べたら。スタイリスト...
+                      </p>
+                      <div class="exterior__image--user">
+                        <img
+                          src="./assets/images/img_front13.png"
+                          alt="竹内万貴"
+                          srcset=""
+                        />
+                      </div>
+                      <dl class="exterior__profile">
+                        <dt>スタイリスト</dt>
+                        <dd>竹内万貴<span>さん</span></dd>
+                        <div class="exterior__icon">
+                          <img
+                            src="./assets/images/ico_front02.svg"
+                            alt="under arrow"
+                            srcset=""
+                          />
+                        </div>
+                      </dl>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              </div>
+              <div class="exterior__vols flex no-swipper">
                 <a
                   href="https://www.daihatsu.co.jp/lineup/move_canbus/special/theory/article_01/"
                   target="_blank"
@@ -408,10 +709,12 @@
                 </a>
               </div>
             </div>
+            </div>
           </section>
 
           <!-- color & safety -->
           <section class="color-safe">
+            <div class="wrap mx-auto">
             <div class="color-safe__wrap flex">
               <div class="color-safe__inner">
                 <h2 class="color-safe__heading-image mx-auto">
@@ -453,7 +756,7 @@
                   </div>
                 </a>
               </div>
-              <div class="color-safe__inner">
+              <div class="color-safe__inner second">
                 <h2 class="color-safe__heading-image mx-auto second">
                   <img
                     src="./assets/images/txt_front06.svg"
@@ -481,6 +784,7 @@
                 </a>
               </div>
             </div>
+            </div>
           </section>
         </div>
       </div>
@@ -489,11 +793,11 @@
       <section class="premium">
         <div class="wrap mx-auto">
           <p class="premium__catch">
-            「私らしく生きる、私のセオリー。」をテーマに,<br />更に多くのコンテンツをマガジンハウス<br /><a
+            「私らしく生きる、私のセオリー。」をテーマに,<br />更に多くのコンテンツを<br class="sm-only">マガジンハウス<br /><a
               href="https://andpremium.jp/canbus-theory/"
               target="_blank"
               >「&amp;Premium.jp」</a
-            >にて絶賛公開中
+            >にて<br class="sm-only">絶賛公開中
           </p>
           <div class="premium__contents flex">
             <div class="premium__item">
@@ -679,7 +983,7 @@
               srcset=""
             />
           </figure>
-          <figure class="cm__banner mx-auto">
+          <figure class="cm__banner mx-auto second">
             <img
               src="./assets/images/bnr_front03.jpg"
               alt="true love"
